@@ -76,7 +76,7 @@ int WINAPI WinMain(
     nid.uID = 1;
     nid.uFlags = NIF_ICON | NIF_TIP;
     nid.hIcon = LoadIconW(hInstance, MAKEINTRESOURCEW(IDI_ICON1));
-    wcscpy(nid.szTip, L"防截屏中");
+    wcscpy_s(nid.szTip, L"防截屏中");
     if (!Shell_NotifyIconW(NIM_ADD, &nid)) {
         MessageBoxW(NULL, L"添加托盘图标失败", L"警告", MB_ICONWARNING);
     }

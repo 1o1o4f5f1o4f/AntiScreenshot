@@ -25,14 +25,14 @@ int WINAPI WinMain(
         WS_EX_LAYERED | WS_EX_TRANSPARENT,
         L"NoCapture",
         NULL,
-        WS_POPUP,
+        WS_POPUP, // 好像是可穿透？？
         0, 0,
         GetSystemMetrics(SM_CXSCREEN),
         GetSystemMetrics(SM_CYSCREEN),
         NULL, NULL, hInstance, NULL
     );
 
-    // 设置窗口属性（透明、置顶、可穿透）
+    // 设置窗口属性（透明、置顶）
     SetLayeredWindowAttributes(hwnd, 0, 255, LWA_ALPHA);
     SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
@@ -43,7 +43,7 @@ int WINAPI WinMain(
     // 显示窗口
     ShowWindow(hwnd, SW_SHOW);
 
-    // 设置窗口显示亲密度
+    // 设置窗口显示亲密度，用来防截屏
     SetWindowDisplayAffinity(hwnd, WDA_MONITOR);
 
     // 任务栏图标

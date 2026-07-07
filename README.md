@@ -20,10 +20,10 @@ make.bat
 windres src\Resource.rc -o build\Resource.o
 ```
 ```shell
-g++ src\main.cpp build\Resource.o -o build\main.exe -mwindows -static
+g++ src\main.cpp build\Resource.o -o build\antiscreenshot.exe -mwindows -static -Wall -Oz
 ```
 ```shell
-build\main.exe
+build\antiscreenshot.exe
 ```
 
 跑起来之后系统托盘会有个图标，显示`防截屏中`。

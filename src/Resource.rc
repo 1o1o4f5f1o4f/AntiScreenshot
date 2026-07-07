@@ -48,11 +48,11 @@ BEGIN
         BEGIN
             VALUE "CompanyName", ""
             VALUE "FileDescription", "反截屏"
-            VALUE "FileVersion", "1.1.4.5"
-            VALUE "InternalName", "Coat"
-            VALUE "LegalCopyright", "Copyright (C) 2026 @asewoirew"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", ""
+            VALUE "LegalCopyright", "Copyright (C) 2026 asewoirew"
             VALUE "ProductName", "反截屏"
-            VALUE "ProductVersion", "1.9.1.9"
+            VALUE "ProductVersion", "1.0.0.0"
         END
     END
     BLOCK "VarFileInfo"

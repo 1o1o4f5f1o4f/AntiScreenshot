@@ -6,7 +6,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
         case WM_DESTROY:
         {
             // 退出前清理托盘图标
-            NOTIFYICONDATAW nid = { sizeof(nid) };
+            NOTIFYICONDATAW nid = {};
+            nid.cbSize = sizeof(nid);
             nid.hWnd = hWnd;
             nid.uID = 1;
             Shell_NotifyIconW(NIM_DELETE, &nid);
@@ -24,8 +25,13 @@ int WINAPI WinMain(
     int       nCmdShow
 )
 {
+    // 抑制未使用参数警告
+    (void)hPrevInstance;
+    (void)lpCmdLine;
+    (void)nCmdShow;
+
     // 注册窗口类
-    WNDCLASSW wc = { 0 };
+    WNDCLASSW wc = {};
     wc.lpfnWndProc = WndProc;
     wc.hInstance = hInstance;
     wc.lpszClassName = L"NoCapture";
@@ -64,13 +70,14 @@ int WINAPI WinMain(
     // 显示窗口
     ShowWindow(hwnd, SW_SHOW);
 
-    // 设置窗口显示亲和性，用来防截屏（Windows 8 及以上系统支持）
+    // 设置窗口显示亲和性，用来防截屏（至少Windows8）
     if (!SetWindowDisplayAffinity(hwnd, WDA_MONITOR)) {
-        MessageBoxW(NULL, L"设置显示亲和性失败\n请确保系统为 Windows 8 或更高版本", L"警告", MB_ICONWARNING);
+        MessageBoxW(NULL, L"设置显示亲和性失败", L"警告", MB_ICONWARNING);
+        return 1;
     }
 
     // 任务栏图标
-    NOTIFYICONDATAW nid = { 0 };
+    NOTIFYICONDATAW nid = {};
     nid.cbSize = sizeof(NOTIFYICONDATAW);
     nid.hWnd = hwnd;
     nid.uID = 1;

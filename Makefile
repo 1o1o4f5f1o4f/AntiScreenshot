@@ -12,7 +12,7 @@ BLDDIR  := build
 CXX     := g++
 RC      := windres
 
-CXXFLAGS := -mwindows -static -Wall -Oz
+CXXFLAGS := -mwindows -static -Wall -Wextra -Wpedantic -Oz
 RCFLAGS  :=
 
 LDFLAGS  := -mwindows -static

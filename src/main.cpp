@@ -66,7 +66,7 @@ int WINAPI WinMain(
 
     // 设置窗口显示亲和性，用来防截屏（至少Windows8）
     if (!SetWindowDisplayAffinity(hwnd, WDA_MONITOR)) {
-        MessageBoxW(NULL, L"设置显示亲和性失败", L"警告", MB_ICONWARNING);
+        MessageBoxW(NULL, L"设置显示亲和性失败", L"错误", MB_ICONWARNING);
         return 1;
     }
 

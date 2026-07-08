@@ -11,22 +11,22 @@
 构建并运行：
 
 ```shell
-make.bat
+mingw32-make
 ```
 
-或者：
+运行：
 
 ```shell
-windres src\Resource.rc -o build\Resource.o
-```
-```shell
-g++ src\main.cpp build\Resource.o -o build\antiscreenshot.exe -mwindows -static -Wall -Oz
-```
-```shell
-build\antiscreenshot.exe
+mingw32-make run
 ```
 
 跑起来之后系统托盘会有个图标，显示`防截屏中`。
+
+清理构建产物：
+
+```shell
+mingw32-make clean
+```
 
 ## 注意事项
 

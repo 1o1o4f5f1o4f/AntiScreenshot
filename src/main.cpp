@@ -5,12 +5,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
     switch (message) {
         case WM_DESTROY:
         {
-            // 退出前清理托盘图标
-            NOTIFYICONDATAW nid = {};
-            nid.cbSize = sizeof(nid);
-            nid.hWnd = hWnd;
-            nid.uID = 1;
-            Shell_NotifyIconW(NIM_DELETE, &nid);
             PostQuitMessage(0);
             return 0;
         }
@@ -74,18 +68,6 @@ int WINAPI WinMain(
     if (!SetWindowDisplayAffinity(hwnd, WDA_MONITOR)) {
         MessageBoxW(NULL, L"设置显示亲和性失败", L"警告", MB_ICONWARNING);
         return 1;
-    }
-
-    // 任务栏图标
-    NOTIFYICONDATAW nid = {};
-    nid.cbSize = sizeof(NOTIFYICONDATAW);
-    nid.hWnd = hwnd;
-    nid.uID = 1;
-    nid.uFlags = NIF_ICON | NIF_TIP;
-    nid.hIcon = LoadIconW(hInstance, MAKEINTRESOURCEW(IDI_ICON1));
-    wcscpy_s(nid.szTip, L"防截屏中");
-    if (!Shell_NotifyIconW(NIM_ADD, &nid)) {
-        MessageBoxW(NULL, L"添加托盘图标失败", L"警告", MB_ICONWARNING);
     }
 
     // 消息循环
